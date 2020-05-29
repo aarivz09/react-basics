@@ -10,9 +10,19 @@
 
 import React from 'react'
 
+// every function component will have a default parameter called props (properties or attributes)
 
-const person = () => {
-    return <h3>this is heading 3 from person component</h3>
+const person = (props) => {
+
+    // return <h3>Hi I am Darpan and my age is{Math.round(Math.random() * 20)}</h3>
+    return (
+        <div>
+            <h3>I am {props.name} and my age is {props.age} and studying in {props.college}</h3>
+            <p>{props.children}</p>
+        </div>
+
+    )
+
 }
 
 export default person;
