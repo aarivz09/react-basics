@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
+
 
 // React Hooks
 // 1 change class to function
@@ -13,11 +14,9 @@ import Person from './Person/Person';
 // the second element will be the updated state
 // use always array destructuring for useState
 
-const app = () => {
+class App extends Component {
 
-
-  // creating state using useState
-  const [peopleState, setPeopleState] = useState({
+  state = {
     people: [
       {
         name: 'Manish', age: 24
@@ -30,70 +29,72 @@ const app = () => {
       },
     ],
 
-    newState: "this is a newdata"
+  };
 
-  });
 
-  console.log(peopleState);
 
-  const [collegeState, setCollegeState] = useState({
-    college: 'Stanford'
-  });
 
-  const clickHandler = () => {
-    setPeopleState({
+  clickHandler = (newName) => {
+    this.setState({
       people: [
         {
           name: 'Manish Kumar', age: 34
         },
         {
-          name: 'Mohammed', age: 55
+          name: newName, age: 55
         },
         {
           name: 'Darpan', age: 20
         },
       ],
-      newState: "this is a newdata"
 
 
-    })
-
-    setCollegeState({
-      college: 'MIT'
-    })
+    });
 
     // this.state.people[0].name = "Singh";
-  }
+  };
 
 
+  render() {
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to Mohammed.me</h1>
+    const style = {
+      backgroundColor: 'red',
+      padding: '20px',
+      border: '5px solid blue',
+      color: 'white'
 
-      </header>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
+    }
+
+
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to Mohammed.me</h1>
+
+        </header>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
 
 
-      {/* here name and age are properties or attributes */}
-      {/* <Person name='SteveJobs' age='30'>Hobbies: Programming</Person>
+        {/* here name and age are properties or attributes */}
+        {/* <Person name='SteveJobs' age='30'>Hobbies: Programming</Person>
         <Person name='Turing' age='28'></Person>
         <Person name='Jack' age='25'>Hobbies: Music</Person>
         <Person name='Dorsey' age='35'></Person> */}
 
-      <button onClick={clickHandler}>Change Details</button>
-      <Person name={peopleState.people[0].name} age={peopleState.people[0].age} college={collegeState.college}>Hobbies: Programming, Learn New things</Person>
-      <Person name={peopleState.people[1].name} age={peopleState.people[1].age} college={collegeState.college}></Person>
-      <Person name={peopleState.people[2].name} age={peopleState.people[2].age} college={collegeState.college}></Person>
+        {/* <button onClick={this.clickHandler.bind(this, 'Jack Dorsey')}>Change Details</button> */}
+        <button style={style} onClick={() => this.clickHandler('Steve Jobs')}>Change Details</button>
+        <Person click={() => this.clickHandler('Jack Dorsey')} name={this.state.people[0].name} age={this.state.people[0].age} >Hobbies: Programming, Learn New things</Person>
+        <Person name={this.state.people[1].name} age={this.state.people[1].age} ></Person>
+        <Person name={this.state.people[2].name} age={this.state.people[2].age} ></Person>
 
 
-    </div>
-  );
+      </div>
+    );
+  }
 
   // return (
   //   <h1>I am Darpan</h1>
@@ -105,10 +106,10 @@ const app = () => {
   // null is simply an object or data
 
 
+
 }
 
-
-export default app;
+export default App;
 
 // STATE
 // CLASS IS NOTHING BUT A BLUEPRINT WHICH HOLD PROPERTIES (VARIABLES/OBJECTS) AND METHODS (FUNCTIONS)
