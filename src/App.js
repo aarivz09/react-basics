@@ -1,11 +1,23 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
 
-class App extends Component {
+// React Hooks
+// 1 change class to function
+// remove render method
+// remove state and clickHandler function
+// import useState 
+// useState returns array with two elements
+// first element of the useState is current State
+// the second element will be the updated state
+// use always array destructuring for useState
 
-  state = {
+const app = () => {
+
+
+  // creating state using useState
+  const [peopleState, setPeopleState] = useState({
     people: [
       {
         name: 'Manish', age: 24
@@ -18,69 +30,85 @@ class App extends Component {
       },
     ],
 
-    college: 'Stanford'
-  }
+    newState: "this is a newdata"
 
-  clickHandler = () => {
-    this.setState({
+  });
+
+  console.log(peopleState);
+
+  const [collegeState, setCollegeState] = useState({
+    college: 'Stanford'
+  });
+
+  const clickHandler = () => {
+    setPeopleState({
       people: [
         {
-          name: 'Manish Kumar', age: 24
+          name: 'Manish Kumar', age: 34
         },
         {
-          name: 'Mohammed', age: 25
+          name: 'Mohammed', age: 55
         },
         {
-          name: 'Darpan', age: 26
+          name: 'Darpan', age: 20
         },
       ],
-      college: 'harward'
+      newState: "this is a newdata"
+
 
     })
-  }
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
 
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+    setCollegeState({
+      college: 'MIT'
+    })
+
+    // this.state.people[0].name = "Singh";
+  }
+
+
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="App-title">Welcome to Mohammed.me</h1>
+
+      </header>
+      <p className="App-intro">
+        To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
 
 
-        {/* here name and age are properties or attributes */}
-        {/* <Person name='SteveJobs' age='30'>Hobbies: Programming</Person>
+      {/* here name and age are properties or attributes */}
+      {/* <Person name='SteveJobs' age='30'>Hobbies: Programming</Person>
         <Person name='Turing' age='28'></Person>
         <Person name='Jack' age='25'>Hobbies: Music</Person>
         <Person name='Dorsey' age='35'></Person> */}
 
-        <button onClick={this.clickHandler}>Click Here</button>
-        <Person name={this.state.people[0].name} age={this.state.people[0].age} college={this.state.college}></Person>
-        <Person name={this.state.people[1].name} age={this.state.people[1].age}></Person>
-        <Person name={this.state.people[2].name} age={this.state.people[2].age}></Person>
+      <button onClick={clickHandler}>Change Details</button>
+      <Person name={peopleState.people[0].name} age={peopleState.people[0].age} college={collegeState.college}>Hobbies: Programming, Learn New things</Person>
+      <Person name={peopleState.people[1].name} age={peopleState.people[1].age} college={collegeState.college}></Person>
+      <Person name={peopleState.people[2].name} age={peopleState.people[2].age} college={collegeState.college}></Person>
 
 
-      </div>
-    );
+    </div>
+  );
 
-    // return (
-    //   <h1>I am Darpan</h1>
-    // );
+  // return (
+  //   <h1>I am Darpan</h1>
+  // );
 
-    // return React.createElement('div', null, 'h1', 'Hi I am Manish');
-    // return React.createElement('div', null, React.createElement('h1', null, 'I am Manish'));
-    // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'I am Manish'));
-    // null is simply an object or data
+  // return React.createElement('div', null, 'h1', 'Hi I am Manish');
+  // return React.createElement('div', null, React.createElement('h1', null, 'I am Manish'));
+  // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'I am Manish'));
+  // null is simply an object or data
 
 
-  }
 }
 
-export default App;
+
+export default app;
 
 // STATE
 // CLASS IS NOTHING BUT A BLUEPRINT WHICH HOLD PROPERTIES (VARIABLES/OBJECTS) AND METHODS (FUNCTIONS)
@@ -92,3 +120,27 @@ export default App;
 // REACT HOOKS : FROM REACT 16.08, USING REACT HOOKS WE CAN USE STATE ON FUNCTION COMPONENTS ALSO.
 
 // NOTE: IF STATE CHANGES, IT WILL LEAD REACT TO RE-RENDER OR RELOADING OUR DOM TO UPDATE
+
+
+
+/*
+ STATEFULL COMPONENTS VS STATELESS COMPONENTS
+ The component which manages state is called STATEFUL COMPONENT
+ also called SMART COMPONENT OR CONTAINER COMPONENT
+EG: APP COMPONENT
+
+STATELESS COMPONENT:
+The component which does not have any state
+ALSO CALLED DUMB COMPONENT OR PRESENTATIONAL COMPONENT
+Eg: Person
+
+
+BEST PRACTICE : Use always more stateless components.
+
+
+
+
+*/
+
+
+
