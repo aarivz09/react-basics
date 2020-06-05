@@ -29,6 +29,8 @@ class App extends Component {
       },
     ],
 
+    showPeople: false,
+
   };
 
 
@@ -54,10 +56,32 @@ class App extends Component {
     // this.state.people[0].name = "Singh";
   };
 
+  nameChangeHandler = (event) => {
+    this.setState({
+      people: [
+        {
+          name: 'Manish Kumar', age: 34
+        },
+        {
+          name: event.target.value, age: 55
+        },
+        {
+          name: 'Darpan', age: 20
+        },
+      ],
+
+
+    });
+  }
+
+  togglePersonHandler = () => {
+    const canShow = this.state.showPeople;
+    this.setState({ showPeople: !canShow })
+  }
 
   render() {
 
-    const style = {
+    const mystyle = {
       backgroundColor: 'red',
       padding: '20px',
       border: '5px solid blue',
@@ -86,11 +110,30 @@ class App extends Component {
         <Person name='Dorsey' age='35'></Person> */}
 
         {/* <button onClick={this.clickHandler.bind(this, 'Jack Dorsey')}>Change Details</button> */}
-        <button style={style} onClick={() => this.clickHandler('Steve Jobs')}>Change Details</button>
-        <Person click={() => this.clickHandler('Jack Dorsey')} name={this.state.people[0].name} age={this.state.people[0].age} >Hobbies: Programming, Learn New things</Person>
-        <Person name={this.state.people[1].name} age={this.state.people[1].age} ></Person>
-        <Person name={this.state.people[2].name} age={this.state.people[2].age} ></Person>
+        {/* <button style={mystyle} onClick={() => this.clickHandler('Steve Jobs')}>Toggle Details</button> */}
 
+        <button style={mystyle} onClick={this.togglePersonHandler}>Toggle Details</button>
+
+        {this.state.showPeople ?
+          <div>
+            <Person
+              click={() => this.clickHandler('Jack Dorsey')}
+              name={this.state.people[0].name}
+              age={this.state.people[0].age}
+            >Hobbies: Programming, Learn New things</Person>
+            <Person
+              name={this.state.people[1].name}
+              age={this.state.people[1].age}
+              changeName={this.nameChangeHandler}
+
+
+            ></Person>
+            <Person
+              name={this.state.people[2].name}
+              age={this.state.people[2].age}
+
+            ></Person>
+          </div> : null}
 
       </div>
     );

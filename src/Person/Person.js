@@ -19,6 +19,7 @@ const person = (props) => {
         <div className='Person'>
             <h3 onClick={props.click}>I am {props.name} and my age is {props.age} and studying in {props.college}</h3>
             <p>{props.children}</p>
+            <input type='text' onChange={props.changeName} value={props.name}></input>
         </div>
 
     )
@@ -26,6 +27,9 @@ const person = (props) => {
 }
 
 export default person;
+
+
+
 
 
 
