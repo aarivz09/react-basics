@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
+import person from './Person/Person';
 
 
 // React Hooks
@@ -89,8 +90,39 @@ class App extends Component {
 
     }
 
+    let persons = null;
+    if (this.state.showPeople) {
+      persons = (
+        <div>
+
+          {this.state.people.map((person) => {
+            return <Person name={person.name} age={person.age} />
+          })}
+          {/* <Person
+            click={() => this.clickHandler('Jack Dorsey')}
+            name={this.state.people[0].name}
+            age={this.state.people[0].age}
+          >Hobbies: Programming, Learn New things</Person>
+          <Person
+            name={this.state.people[1].name}
+            age={this.state.people[1].age}
+            changeName={this.nameChangeHandler}
+
+
+          ></Person>
+          <Person
+            name={this.state.people[2].name}
+            age={this.state.people[2].age}
+
+          ></Person> */}
+        </div>
+      );
+    }
+
+
 
     return (
+
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -114,26 +146,8 @@ class App extends Component {
 
         <button style={mystyle} onClick={this.togglePersonHandler}>Toggle Details</button>
 
-        {this.state.showPeople ?
-          <div>
-            <Person
-              click={() => this.clickHandler('Jack Dorsey')}
-              name={this.state.people[0].name}
-              age={this.state.people[0].age}
-            >Hobbies: Programming, Learn New things</Person>
-            <Person
-              name={this.state.people[1].name}
-              age={this.state.people[1].age}
-              changeName={this.nameChangeHandler}
+        {persons}
 
-
-            ></Person>
-            <Person
-              name={this.state.people[2].name}
-              age={this.state.people[2].age}
-
-            ></Person>
-          </div> : null}
 
       </div>
     );
