@@ -18,6 +18,7 @@ const person = (props) => {
     return (
         <div className='Person'>
             <h3 onClick={props.click}>I am {props.name} and my age is {props.age} and studying in {props.college}</h3>
+            <button onClick={props.delete}>Delete</button>
             <p>{props.children}</p>
             <input type='text' onChange={props.changeName} value={props.name}></input>
         </div>
