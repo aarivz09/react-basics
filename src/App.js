@@ -5,6 +5,7 @@ import Person from './Person/Person';
 import person from './Person/Person';
 
 
+
 // React Hooks
 // 1 change class to function
 // remove render method
@@ -139,8 +140,6 @@ class App extends Component {
             name={this.state.people[1].name}
             age={this.state.people[1].age}
             changeName={this.nameChangeHandler}
-
-
           ></Person>
           <Person
             name={this.state.people[2].name}
@@ -149,6 +148,8 @@ class App extends Component {
           ></Person> */}
         </div>
       );
+
+      mystyle.backgroundColor = 'blue';
     }
 
 
@@ -163,17 +164,30 @@ class App extends Component {
     // console.log('b object is ', b);
     // console.log('a object is ', a);
 
+    // let assignedclasses = ['red', 'bold', 'body'].join(' '); // red bold body
+    let assignedclasses = [];
+    console.log(assignedclasses);
+
+    if (this.state.people.length <= 2) {
+      assignedclasses.push('bold');
+    }
+
+    if (this.state.people.length <= 1) {
+      assignedclasses.push('red');
+    }
+
+    let headclass = ['App'].join(' ');
+
+
 
     return (
 
-      <div className="App">
+      <div className={headclass}>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Mohammed.me</h1>
-
+          <h1>Welcome to Mohammed.me</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+        <p className={assignedclasses.join(' ')}>
+          hi i am Mohammed, I am freelancer and a software engineer
         </p>
 
 
