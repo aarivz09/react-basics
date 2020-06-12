@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
-import person from './Person/Person';
-
+import Radium from 'radium';
 
 
 // React Hooks
@@ -111,7 +110,12 @@ class App extends Component {
       backgroundColor: 'red',
       padding: '20px',
       border: '5px solid blue',
-      color: 'white'
+      color: 'white',
+      ':hover': {
+        backgroundColor: 'green',
+        color: 'black',
+      }
+
 
     }
 
@@ -150,6 +154,10 @@ class App extends Component {
       );
 
       mystyle.backgroundColor = 'blue';
+      mystyle[':hover'] = {
+        backgroundColor: 'orange',
+        color: 'white'
+      }
     }
 
 
@@ -223,7 +231,7 @@ class App extends Component {
 
 }
 
-export default App;
+export default Radium(App);
 
 // STATE
 // CLASS IS NOTHING BUT A BLUEPRINT WHICH HOLD PROPERTIES (VARIABLES/OBJECTS) AND METHODS (FUNCTIONS)
