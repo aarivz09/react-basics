@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 
 // React Hooks
@@ -190,31 +190,33 @@ class App extends Component {
 
     return (
 
-      <div className={headclass}>
-        <header className="App-header">
-          <h1>Welcome to Mohammed.me</h1>
-        </header>
-        <p className={assignedclasses.join(' ')}>
-          hi i am Mohammed, I am freelancer and a software engineer
+      <StyleRoot>
+        <div className={headclass}>
+          <header className="App-header">
+            <h1>Welcome to Mohammed.me</h1>
+          </header>
+          <p className={assignedclasses.join(' ')}>
+            hi i am Mohammed, I am freelancer and a software engineer
         </p>
 
 
 
-        {/* here name and age are properties or attributes */}
-        {/* <Person name='SteveJobs' age='30'>Hobbies: Programming</Person>
+          {/* here name and age are properties or attributes */}
+          {/* <Person name='SteveJobs' age='30'>Hobbies: Programming</Person>
         <Person name='Turing' age='28'></Person>
         <Person name='Jack' age='25'>Hobbies: Music</Person>
         <Person name='Dorsey' age='35'></Person> */}
 
-        {/* <button onClick={this.clickHandler.bind(this, 'Jack Dorsey')}>Change Details</button> */}
-        {/* <button style={mystyle} onClick={() => this.clickHandler('Steve Jobs')}>Toggle Details</button> */}
+          {/* <button onClick={this.clickHandler.bind(this, 'Jack Dorsey')}>Change Details</button> */}
+          {/* <button style={mystyle} onClick={() => this.clickHandler('Steve Jobs')}>Toggle Details</button> */}
 
-        <button style={mystyle} onClick={this.togglePersonHandler}>Toggle Details</button>
+          <button style={mystyle} onClick={this.togglePersonHandler}>Toggle Details</button>
 
-        {persons}
+          {persons}
 
 
-      </div>
+        </div>
+      </StyleRoot>
     );
   }
 
