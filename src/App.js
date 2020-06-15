@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 // import Radium, { StyleRoot } from 'radium';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 
 // React Hooks
@@ -17,18 +17,6 @@ import styled from 'styled-components';
 // use always array destructuring for useState
 
 
-const StyledButton = styled.button`
-background-color : ${props => props.alt ? 'black' : 'green'};
-color:white;
-border : 5px solid grey;
-padding:8px;
-cursor: pointer;
-&:hover': {
-         background-color: ${props => props.alt ? 'yellow' : 'purple'},
-         color: 'green',
-       }
-
-`;
 
 class App extends Component {
 
@@ -91,21 +79,7 @@ class App extends Component {
 
     });
 
-    // this.setState({
-    //   people: [
-    //     {
-    //       name: 'Manish Kumar', age: 34
-    //     },
-    //     {
-    //       name: event.target.value, age: 55
-    //     },
-    //     {
-    //       name: 'Darpan', age: 20
-    //     },
-    //   ],
 
-
-    // });
   }
 
   togglePersonHandler = () => {
@@ -121,18 +95,10 @@ class App extends Component {
 
   render() {
 
-    // const mystyle = {
-    //   backgroundColor: 'red',
-    //   padding: '20px',
-    //   border: '5px solid blue',
-    //   color: 'white',
-    //   ':hover': {
-    //     backgroundColor: 'green',
-    //     color: 'black',
-    //   }
+    let btnClass = [classes.Button]
+    console.log(btnClass);
 
 
-    // }
 
     let persons = null;
     if (this.state.showPeople) {
@@ -168,11 +134,9 @@ class App extends Component {
         </div>
       );
 
-      // mystyle.backgroundColor = 'blue';
-      // mystyle[':hover'] = {
-      //   backgroundColor: 'orange',
-      //   color: 'white'
-      // }
+      btnClass.push(classes.Red);
+      console.log(btnClass);
+
     }
 
 
@@ -199,14 +163,14 @@ class App extends Component {
       assignedclasses.push('red');
     }
 
-    let headclass = ['App'].join(' ');
+
 
 
 
     return (
 
 
-      <div className={headclass}>
+      <div className={classes.App}>
         <header className="App-header">
           <h1>Welcome to Mohammed.me</h1>
         </header>
@@ -224,9 +188,9 @@ class App extends Component {
 
         {/* <button onClick={this.clickHandler.bind(this, 'Jack Dorsey')}>Change Details</button> */}
         {/* <button style={mystyle} onClick={() => this.clickHandler('Steve Jobs')}>Toggle Details</button> */}
-        <StyledButton alt={this.state.showPeople}>
-          <button onClick={this.togglePersonHandler}>Toggle Details</button>
-        </StyledButton>
+
+        <button className={btnClass.join(' ')} onClick={this.togglePersonHandler}>Toggle Details</button>
+
         {persons}
 
 

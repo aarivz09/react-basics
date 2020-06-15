@@ -3,7 +3,19 @@
   color: blueviolet;
 }
 
-.red {
+.Button:hover {
+  background-color: yellow;
+}
+
+.Button.Red {
+  background-color: red;
+}
+
+.Button.Red:hover {
+  background-color: saddlebrown;
+}
+
+/* .red {
   color: red;
 }
 
@@ -13,4 +25,4 @@
 
 .green {
   color: green;
-}
+} */
