@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import classes from './App.css';
-import Person from './Person/Person';
+import Persons from '../components/Persons/Persons'
+import Cockpit from '../components/Cockpit/Cockpit'
 // import Radium, { StyleRoot } from 'radium';
 // import styled from 'styled-components';
 
@@ -95,72 +95,24 @@ class App extends Component {
 
   render() {
 
-    let btnClass = [classes.Button]
-    console.log(btnClass);
 
 
 
     let persons = null;
     if (this.state.showPeople) {
-      persons = (
-        <div>
-
-          {this.state.people.map((person, index) => {
-            return <Person
-              name={person.name}
-              delete={() => this.deletePersonHandler(index)}
-              changeName={(event) => this.nameChangeHandler(event, person.id)}
-              age={person.age}
-              key={person.id}
+      persons =
+        <Persons
+          persons={this.state.people}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangeHandler}
 
 
-            />
-          })}
-          {/* <Person
-            click={() => this.clickHandler('Jack Dorsey')}
-            name={this.state.people[0].name}
-            age={this.state.people[0].age}
-          >Hobbies: Programming, Learn New things</Person>
-          <Person
-            name={this.state.people[1].name}
-            age={this.state.people[1].age}
-            changeName={this.nameChangeHandler}
-          ></Person>
-          <Person
-            name={this.state.people[2].name}
-            age={this.state.people[2].age}
-
-          ></Person> */}
-        </div>
-      );
-
-      btnClass.push(classes.Red);
-      console.log(btnClass);
-
-    }
+        />
 
 
-    // const a = {
-    //   name: 'aariv',
-    // }
-    // console.log('a object is ', a);
 
-    // const b = [...a];
-    // b.name = 'manish';
 
-    // console.log('b object is ', b);
-    // console.log('a object is ', a);
 
-    // let assignedclasses = ['red', 'bold', 'body'].join(' '); // red bold body
-    let assignedclasses = [];
-    console.log(assignedclasses);
-
-    if (this.state.people.length <= 2) {
-      assignedclasses.push('bold');
-    }
-
-    if (this.state.people.length <= 1) {
-      assignedclasses.push('red');
     }
 
 
@@ -171,25 +123,12 @@ class App extends Component {
 
 
       <div className={classes.App}>
-        <header className="App-header">
-          <h1>Welcome to Mohammed.me</h1>
-        </header>
-        <p className={assignedclasses.join(' ')}>
-          hi i am Mohammed, I am freelancer and a software engineer
-        </p>
+        <Cockpit showPersons={this.state.showPeople}
+          people={this.state.people}
+          clicked={this.togglePersonHandler}
+        />
 
 
-
-        {/* here name and age are properties or attributes */}
-        {/* <Person name='SteveJobs' age='30'>Hobbies: Programming</Person>
-        <Person name='Turing' age='28'></Person>
-        <Person name='Jack' age='25'>Hobbies: Music</Person>
-        <Person name='Dorsey' age='35'></Person> */}
-
-        {/* <button onClick={this.clickHandler.bind(this, 'Jack Dorsey')}>Change Details</button> */}
-        {/* <button style={mystyle} onClick={() => this.clickHandler('Steve Jobs')}>Toggle Details</button> */}
-
-        <button className={btnClass.join(' ')} onClick={this.togglePersonHandler}>Toggle Details</button>
 
         {persons}
 
@@ -207,9 +146,6 @@ class App extends Component {
   // return React.createElement('div', null, React.createElement('h1', null, 'I am Manish'));
   // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'I am Manish'));
   // null is simply an object or data
-
-
-
 }
 
 export default App;
